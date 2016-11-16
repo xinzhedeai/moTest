@@ -25,8 +25,9 @@
 				});
 			})
 		</script>
-			<link href="lib/css/bootstrap.css" rel="stylesheet">
+		<link href="lib/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="lib/css/easyui.css" />
+		<link rel="stylesheet" type="text/css" href="lib/css/extend-easyUI.css"/>
 		<link rel="stylesheet" type="text/css" href="lib/css/icon.css"/>
 	
 		<link rel="stylesheet" href="lib/css/common.css" />
@@ -57,6 +58,7 @@
 				padding-right: 10px;
 				overflow: hidden;
 				border: 1px solid #e6e6e6;
+				margin-bottom: 4px;
 			}
 			
 			.current-mod ul li {
@@ -190,15 +192,15 @@
 					</div>
 					
 					<table class="easyui-datagrid" title="Basic DataGrid" style="width:auto;height:250px"
-						data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'">
+						data-options="fitColumns:true, singleSelect:true,collapsible:false,url:'datagrid_data1.json',method:'get'">
 					<thead>
 						<tr>
-							<th data-options="field:'itemid',width:80">Item ID</th>
+							<th data-options="field:'itemid',width:100">Item ID</th>
 							<th data-options="field:'productid',width:100">Product</th>
-							<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-							<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-							<th data-options="field:'attr1',width:250">Attribute</th>
-							<th data-options="field:'status',width:60,align:'center'">Status</th>
+							<th data-options="field:'listprice',align:'right',width:100">List Price</th>
+							<th data-options="field:'unitcost',align:'center',width:100">Unit Cost</th>
+							<th data-options="field:'attr1',width:100">Attribute</th>
+							<th data-options="field:'status',align:'center',width:100">Status</th>
 						</tr>
 					</thead>
 				</table>
