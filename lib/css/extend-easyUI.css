@@ -5,7 +5,8 @@
 }
 .datagrid {
 	clear: both;
-	margin-top: 47px;
+/*	margin-top: 47px;*/
+    margin-top: 7px;
 }
 .datagrid .panel-body, .datagrid-header, div.datagrid-header table td {
 	background: none;

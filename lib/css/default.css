@@ -5,3 +5,75 @@
 .horizontalTable tr th span{color:#ef7d1b;}
 .horizontalTable tr td{padding:5px 15px; border-style: solid; border-color: #cacaca; border-width: 0 1px 1px 1px; font-size: 12px; color:#4a4a4a;}
 .horizontalTable tr td img{display:in-line; vertical-align:middle; margin-left:-23px; margin-right:5px;}
+
+/*index页面样式*/
+.navbar-nav {                                                       
+	float: right;                                                     
+}                                                                   
+                                                                    
+.table-bordered> tbody> tr> th {                                    
+	vertical-align: middle;                                           
+}                                                                   
+                                                                    
+.projectName {                                                      
+	font-family: 华文新魏;                                                
+	font-size: 26px;                                                  
+	font-weight: bold;                                                
+}                                                                   
+                                                                    
+.current-mod {                                                      
+	width: auto;                                                      
+	height: 40px;                                                     
+	float: left;                                                      
+	position: relative;                                               
+	background-color: #fff;                                           
+	padding-right: 10px;                                              
+	overflow: hidden;                                                 
+	border: 1px solid #e6e6e6;                                        
+	margin-bottom: 4px;                                               
+}                                                                   
+                                                                    
+.current-mod ul li {                                                
+	display: block;                                                   
+	float: left;                                                      
+	height: 40px;                                                     
+	margin-right: 8px;                                                
+}                                                                   
+                                                                    
+.current-mod ul li a {                                              
+	line-height: 40px;                                                
+	font-size: 14px;                                                  
+}                                                                   
+.searchBtn{float: right;vertical-align: middle;margin-top: 6px;}    
+.searchBtn > button:hover{top: -1px;}
+.navbarBg{background-color: #0081c2;box-shadow: 1px 1px 9px 4px gray;border-color: transparent;}
+
+/*.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #F7F7F7;
+    background-color: #0081c2;
+}*/
+.navbar-default .navbar-nav > li > a {color: #F7F7F7; background-color: #0081c2;}
+/*.glyphicon{color: #0081C2;}
+.glyphicon:hover{color: #F7F7F7 !important;}*/
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{color: #F7F7F7; background-color: #0081c2;}
+.nkNameMenu > li>a:hover {color: #F7F7F7; background-color: #0081c2;}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FCF6F6;
+}
+.navbar-default .navbar-nav > li > a:hover {
+      color: #555;
+    background-color: #fff;
+}
+.glyphicon {margin-right: 2px;}
+
+/* footer */
+.footerWrapper{width:100%;  height:69px; overflow:hidden; background: url(../image/bg_footer.png) repeat-x top center; background-color:#F4F4F4;}
+.footer{/* height:79px; */ /* border-top:3px solid #1f2b60; */ margin:0 auto; /* line-height:78px; */ height: 50px; padding-top: 20px;}
+.footerLogo{float:left; padding-left:29%;}
+.footerFont{margin-left:66px; float:left; line-height:1.5em; font-size:11px; color:#666; padding-top:5px;}
+
+.rightWrapper{min-height: 820px; min-width: 1200px;}

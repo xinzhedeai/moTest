@@ -3,11 +3,21 @@
 
 <head>
 		<!-- Bootstrap -->
-
+		<title>国际物流管理系统</title>
+		<link rel="shortcut icon" href="/lib/img/ico/icon-webIcon.ico" />
+		<meta name="author" content="Dai" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<script src="lib/js/jquery-1.11.1.js"></script>
 		<script src="lib/js/bootstrap.js"></script>
 		<script type="text/javascript" src="lib/js/jquery.easyui.min.js"></script>
 		<script src="lib/js/jquery-powerSwitch.js"></script>
+		<script type="text/javascript" src="lib/js/fisheye-iutil.js"></script>
+	<script type="text/javascript" src="lib/js/dock-example1.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$("#navvBar h4").powerSwitch({
@@ -21,85 +31,44 @@
 			})
 		</script>
 		<link href="lib/css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" href="lib/css/easyui.css" />
+		<link rel="stylesheet" href="lib/plugin/jquery-easyui-1.5/themes/bootstrap/easyui.css" />
 		<link rel="stylesheet" type="text/css" href="lib/css/extend-easyUI.css"/>
 		<link rel="stylesheet" type="text/css" href="lib/css/icon.css"/>
 	
 		<link rel="stylesheet" href="lib/css/common.css" />
 		<link rel="stylesheet" href="lib/css/default.css" />
 		<link rel="stylesheet" href="lib/css/api.css" />
-
+		<link rel="stylesheet" type="text/css" href="lib/css/layout1.css"/>
+		<link rel="stylesheet" type="text/css" href="lib/css/dock-example1.css"/>
+		<link rel="stylesheet" type="text/css" href="lib/css/stack-example3.css"/>
 		<style>
-			.navbar-nav {
-				float: right;
-			}
-			
-			.table-bordered> tbody> tr> th {
-				vertical-align: middle;
-			}
-			
-			.projectName {
-				font-family: 华文新魏;
-				font-size: 26px;
-				font-weight: bold;
-			}
-			
-			.current-mod {
-				width: auto;
-				height: 40px;
-				float: left;
-				position: relative;
-				background-color: #fff;
-				padding-right: 10px;
-				overflow: hidden;
-				border: 1px solid #e6e6e6;
-				margin-bottom: 4px;
-			}
-			
-			.current-mod ul li {
-				display: block;
-				float: left;
-				height: 40px;
-				margin-right: 8px;
-			}
-			
-			.current-mod ul li a {
-				line-height: 40px;
-				font-size: 14px;
-			}
-			.searchBtn{float: right;vertical-align: middle;margin-top: 6px;}
 		</style>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default navbarBg" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand projectName" href="#">MOAL SYSTEM</a>
-					<!-- <img src="lib/image/moal2.png"/>-->
+					<!--<a class="navbar-brand projectName" href="#">MOAL SYSTEM</a>-->
+					 <img src="lib/image/moal5.png"/>
 				</div>
 				<div>
 
 					<ul class="nav navbar-nav">
-						<!--       <li class=""><a href="#">iOS</a></li>-->
-						<!--           <li><a href="#">欢迎</a></li>-->
-
 						<li class="dropdown">
-							<!--	<span>欢迎</span>-->
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<!-- <span>欢迎</span>--><span class="glyphicon glyphicon-user"></span>耶和华祝福满满<b class="caret"></b>
-								<!--<span>登陆</span> -->
+								span class="glyphicon glyphicon-user"></span>耶和华祝福满满<b class="caret"></b>
 							</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu nkNameMenu">
 								<li>
-									<a href="#">修改密码</a>
+									<a href="#"><span class="glyphicon glyphicon-wrench"></span>修改密码</a>
 								</li>
 								<li>
-									<a href="#">个人信息</a>
+									<a href="#"><span class="glyphicon glyphicon-cog"></span>个人信息</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="#">登出系统</a>
+									<a href="#"><span class="glyphicon glyphicon-off"></span>登出系统</a>
 								</li>
 							</ul>
 						</li>
@@ -108,7 +77,7 @@
 			</div>
 		</nav>
 
-		<div class="container">
+		<div class="container rightWrapper">
 			<div class="row">
 				<div class="col-md-2">
 					<div id="navvBar" class="navv_bar">
@@ -151,32 +120,27 @@
 						</ul>
 					</div>
 					<div class="searchBtn">
-						<button type="button" class="btn btn-danger btn-sm">清空</button>
-						<button type="button" class="btn btn-success btn-sm">搜索</button>
+						<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span>清空</button>
+						<button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search"></span>搜索</button>
 					</div>
 					<div class="search">
 						<form action="" class="">
-							<!--<div class="form-group">
-					<label for="name">标签</label>
-					
-				</div>-->
-
 							<table border="" cellspacing="" cellpadding="" class="table table-bordered">
 								<col width="100" />
-								<col width="200" />
+								<col width="250" />
 								<col width="100" />
-								<col width="" />
+								<col width="200" />
 								<tbody>
 									<tr>
-										<th>标签<span>*</span></th>
+										<th>商品名<span>*</span></th>
 										<td><input type="text" class="form-control" placeholder="文本输入"></td>
-										<th><label for="name">标签</label><span>*</span></th>
+										<th><label for="name">运单号</label><span>*</span></th>
 										<td><input type="text" class="form-control" placeholder="文本输入"></td>
 									</tr>
 									<tr>
-										<th><label for="name">标签</label><span>*</span></th>
+										<th><label for="name">手机号码</label><span>*</span></th>
 										<td><input type="text" class="form-control" placeholder="文本输入"></td>
-										<th><label for="name">标签</label><span>*</span></th>
+										<th><label for="name">配送状态</label><span>*</span></th>
 										<td>
 											<select class="form-control">
 												<option>1</option>
@@ -191,24 +155,43 @@
 							</table>
 						</form>
 					</div>
+					<div class="funcBtn">
+								
+						<!-- BEGIN DOCK 1 ============================================================ -->
+						<div id="dock" style="margin-top: 50px;">
+							<div class="dock-container">
+								<a class="dock-item" href="index.html"><img src="images/dock/home.png" alt="哈利路亚" /></a> 
+								<a class="dock-item" href="example2.html"><img src="images/dock/email.png" alt="以马内利" /></a> 
+								<a class="dock-item" href="example3.html"><img class="easyui-tooltip" src="images/dock/portfolio.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="all-examples.html"><img src="images/dock/music.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/video.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/history.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/calendar.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/link.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/rss.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/rss2.png" alt="耶和华祝福满满" /></a> 
+								<a class="dock-item" href="#"><img src="images/dock/add65.png" alt="耶和华祝福满满"/></a> 
+								<a class="dock-item" href="#"><img src="images/dock/batchStockin-65.png" alt="耶和华祝福满满" /></a> 
+							</div><!-- end div .dock-container -->
+						</div><!-- end div .dock #dock -->
+						<!-- END DOCK 1 ============================================================ -->
+
+					</div>
 					
-					<table class="easyui-datagrid" title="Basic DataGrid" style="width:auto;height:250px"
-						data-options="fitColumns:true, singleSelect:true,collapsible:false,pagination:true,
-				pageSize:10",url:'datagrid_data1.json',method:'get'">
+					<table class="easyui-datagrid"style="width:auto;height:250px"
+						data-options="fitColumns:true, singleSelect:false,collapsible:false,pagination:true,pageSize:10,url:'datagrid_data1.json',method:'get'">
 					<thead>
 						<tr>
 							<th data-options="field:'ck',checkbox:true"></th>
-							<th data-options="field:'itemid',width:100">Item ID</th>
-							<th data-options="field:'productid',width:100">Product</th>
-							<th data-options="field:'listprice',align:'right',width:100">List Price</th>
-							<th data-options="field:'unitcost',align:'center',width:100">Unit Cost</th>
+							<th data-options="field:'itemid',width:100">是谁</th>
+							<th data-options="field:'productid',width:100">坐在宝座上圣洁羔羊</th>
+							<th data-options="field:'listprice',align:'right',width:100">订单号</th>
+							<th data-options="field:'unitcost',align:'center',width:100">单位价格</th>
 							<th data-options="field:'attr1',width:100">Attribute</th>
 							<th data-options="field:'status',align:'center',width:100">Status</th>
 						</tr>
 					</thead>
 				</table>
-					<h1>你好，世界！</h1>
-					<button type="button" class="btn btn-danger">哈利路亚！！</button>
 				</div>
 			</div>
 		</div>
