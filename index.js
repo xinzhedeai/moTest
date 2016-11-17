@@ -5,16 +5,60 @@
  */
 "use strict"
 $(function(){
-	$('#dock img').tooltip({
-				position : 'top',
-				content: function(){
-					var cc = $(this).attr('alt');
-					console.info(cc);
+		// Dock initialize
+		$('#dock').Fisheye(
+			{
+				maxWidth: 30,
+				items: 'a',
+	//			itemsText: 'span',
+				container: '.dock-container',
+				itemWidth: 50,
+				proximity: 60,
+				alignment : 'left',
+				valign: 'bottom',
+				halign : 'center'
+			}
+		);
+		$('#dock img').tooltip({
+		position : 'top',
+		content: function(){
+			var cc = $(this).attr('alt');
+			console.info(cc);
 //					console.info("哈利路亚");
-					return cc;
-				}
-			});
-			
+			return cc;
+		}
+	});
+//	$('#dock img').load()
+
+//var imgdefereds = [];
+//$('#dock img').each(function() {
+//	var dfd = $.Deferred();
+//	$(this).bind('load', function() {
+//		dfd.resolve();
+//	}).bind('error', function() {
+//		//图片加载错误，加入错误处理
+//		// dfd.resolve();
+//	})
+//	if(this.complete) setTimeout(function() {
+//		var i = 0;
+//		console.info("完成了张数:"+ (i++));
+//		dfd.resolve();
+//	}, 1000);
+//	imgdefereds.push(dfd);
+//})
+//$.when.apply(null, imgdefereds).done(function() {
+////	callback();
+//	$('#dock img').tooltip({
+//		position : 'top',
+//		content: function(){
+//			var cc = $(this).attr('alt');
+//			console.info(cc);
+////					console.info("哈利路亚");
+//			return cc;
+//		}
+//	});
+//			
+//});
 	//page footer
 	$('body').append('<div class="footerWrapper">' +
 		'<div class="footer">' +

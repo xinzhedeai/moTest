@@ -15,19 +15,19 @@
 	vertical-align: middle;                                           
 }                                                                   
                                                                     
-.projectName {                                                      
+/*.projectName {                                                      
 	font-family: 华文新魏;                                                
 	font-size: 26px;                                                  
 	font-weight: bold;                                                
-}                                                                   
-                                                                    
+}                                                                   */
+.nkName{font-family: 华文新魏; font-size: 17px; font-weight: bold;}                                              
 .current-mod {                                                      
 	width: auto;                                                      
 	height: 40px;                                                     
 	float: left;                                                      
 	position: relative;                                               
 	background-color: #fff;                                           
-	padding-right: 10px;                                              
+	/*padding-right: 10px;*/                                              
 	overflow: hidden;                                                 
 	border: 1px solid #e6e6e6;                                        
 	margin-bottom: 4px;                                               
@@ -76,6 +76,18 @@
 .footerLogo{float:left; padding-left:29%;}
 .footerFont{margin-left:66px; float:left; line-height:1.5em; font-size:11px; color:#666; padding-top:5px;}
 
-.rightWrapper{min-height: 820px; min-width: 1200px;}
+.rightWrapper{min-height: 820px; /*min-width: 1200px;*/}
 /*.datagrid-htable tr{height: 35px;}
 .datagrid-btable tr{height: 35px;}*/
+	/* ＣＳＳ绘制三角形 */
+	.triangle {
+		width: 0;
+		height: 0px;
+		border: 9px solid transparent;
+		border-top-width: 0;
+		border-right-width: 0;
+		border-left-color: #2c67e1;
+		border-left-width: 20px;
+		float: right;
+		margin-top: -20px;
+	}
