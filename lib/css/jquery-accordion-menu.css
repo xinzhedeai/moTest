@@ -12,6 +12,7 @@
 	position: relative;
 	/*box-shadow: 0 20px 50px #333*/
 	box-shadow: 0 3px 29px #333;
+	height: 612px;
 }
 
 .jquery-accordion-menu .jquery-accordion-menu-footer,.jquery-accordion-menu .jquery-accordion-menu-header {

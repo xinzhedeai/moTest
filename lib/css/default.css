@@ -1,3 +1,4 @@
+@import url(common.css);
 /* table */
 .horizontalTable{border-top: 1px solid #CACACA; border-right: 1px solid #cacaca; width:100%; clear: both; /* background: #FFFFFF; */} /* apiTable02 -- horizontalTable */
 .horizontalTable caption{visibility:hidden; height: 10px;}
@@ -43,18 +44,13 @@
 .current-mod ul li a {                                              
 	line-height: 40px;                                                
 	font-size: 14px;                                                  
-}                                                                   
+}                         
+/*搜索按钮*/                                          
 .searchBtn{float: right;vertical-align: middle;margin-top: 6px;transition:height 2s;}    
 .searchBtn > button:hover{height: 2.4em;}
-.navbarBg{background-color: #0081c2;box-shadow: 1px 1px 9px 4px gray;border-color: transparent;}
-
-/*.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #F7F7F7;
-    background-color: #0081c2;
-}*/
+/*顶部栏*/
+.navbarBg{background-color: #0081c2; box-shadow: 1px 1px 9px 4px gray; border-color: transparent;}
 .navbar-default .navbar-nav > li > a {color: #F7F7F7; background-color: #0081c2;}
-/*.glyphicon{color: #0081C2;}
-.glyphicon:hover{color: #F7F7F7 !important;}*/
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{color: #F7F7F7; background-color: #0081c2;}
 .nkNameMenu > li>a:hover {color: #F7F7F7; background-color: #0081c2;}
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -68,17 +64,20 @@
       color: #555;
     background-color: #fff;
 }
+.submenu > li > a{background-color: #F7f7f7 !important;color: #222222 !important;}
 .glyphicon {margin-right: 2px;}
+/*.glyphicon{color: #0081C2;}
+.glyphicon:hover{color: #F7F7F7 !important;}*/
+
+
 
 /* footer */
 .footerWrapper{width:100%;  height:69px; overflow:hidden; background: url(../image/bg_footer.png) repeat-x top center; background-color:#F4F4F4;}
-.footer{/* height:79px; */ /* border-top:3px solid #1f2b60; */ margin:0 auto; /* line-height:78px; */ height: 50px; padding-top: 20px;}
-.footerLogo{float:left; padding-left:29%;}
-.footerFont{margin-left:66px; float:left; line-height:1.5em; font-size:11px; color:#666; padding-top:5px;}
+.footer{margin:0 auto; width: 490px; height: 50px; padding-top: 20px;}
+.footerLogo, .footerFont{float:left;}
+.footerFont{margin-left:66px; line-height:1.5em; font-size:11px; color:#666; padding-top:5px;}
 
 .rightWrapper{min-height: 820px; /*min-width: 1200px;*/}
-/*.datagrid-htable tr{height: 35px;}
-.datagrid-btable tr{height: 35px;}*/
 	/* ＣＳＳ绘制三角形 */
 	.triangle {
 		width: 0;
@@ -91,3 +90,7 @@
 		float: right;
 		margin-top: -20px;
 	}
+/*功能按钮样式*/
+.dock-container { position: relative; top: -8px; height: 50px; padding-left: 20px; }
+a.dock-item { display: block; width: 50px; position: absolute; bottom: 0; text-align: center; text-decoration: none; color: #333; }
+.dock-item img { border: 0; margin: 5px 10px 0px; width: 100%; }

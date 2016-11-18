@@ -158,7 +158,7 @@ span.textbox.spinner span.textbox-addon {
 	margin: 1px;
 }*/
 /* .datagrid .panel-body {border-right:none;} */  /* 去外侧边框 */
-.datagrid .datagrid-view2 tr td:last-child {border-right:none;}  /* 去内侧边框 */
+/*.datagrid .datagrid-view2 tr td:last-child {border-right:none;} */ /* 去内侧边框 *//*11-17注释*/
 .datagrid .datagrid-pager {border-top:none !important;}  /* 保留底部上边框 */
 /* .datagrid .datagrid-body tr:last-child td {border-bottom:none;} */  /* 保留底部下边框 */
 /* 便利贴 */
