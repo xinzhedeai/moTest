@@ -1,10 +1,4 @@
 /**
- * name index.js
- * author haliluya
- * 
- * 
- */
-/**
  * @file 摸版
  * @author HaLiLuYa
  * @date: 2016-11-17 09:40:15
@@ -38,9 +32,11 @@ $(function(){
 		}
 	);
 	$('#dock img').hover(function(){
+		console.log('haliluya');
 		$(this).tooltip({
 			position : 'top',
 			content: function(){
+				console.info('yimaneili');
 				var cc = $(this).attr('alt');
 				return cc;
 			},
@@ -52,7 +48,7 @@ $(function(){
     		}
 			
 		})
- })		
+	 })		
 	//page footer
 	$('body').append('<div class="footerWrapper">' +
 		'<div class="footer">' +
@@ -64,11 +60,25 @@ $(function(){
 			'</p>' +
 		'</div>' +
 	'</div>');
+	
+	//时间插件初始化
+	$('.form_datetime_start,.form_datetime_end').datetimepicker({
+        language:  'zh-CN',
+//	        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView : 2,
+		maxView : 2,
+		pickerPosition : 'bottom-right',
+		format: 'yyyy-mm-dd',
+//			forceParse: 0,
+//	        showMeridian: 1,
+    });
 })
 
 $(function(){
-	$('.startDate, .endDate').datepickerJQueryUI();
-	
 	var columns = [{
 		field : 'ck',
 		checkbox : true
@@ -106,10 +116,9 @@ $(function(){
 		crossPageSwitch : true,
 		conditionSwitch : true,
 		scrollSwitch : true,
-		
 	};
 	$($index.indexDatagrid).datagridEasyUI(options);
-	$($index.indexDatagrid).datagrid('loadData',{total:0,rows:[]});	
+//	$($index.indexDatagrid).datagrid('loadData',{total:0,rows:[]});	
 })
 
 //请求体

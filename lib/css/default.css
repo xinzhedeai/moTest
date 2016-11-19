@@ -8,11 +8,7 @@
 	vertical-align: middle;                                           
 }                                                                   
                                                                     
-.projectName {                                                      
-	font-family: 华文新魏;                                                
-	font-size: 26px;                                                  
-	font-weight: bold;                                                
-}                                                                   */
+.projectName {font-family: 华文新魏; font-size: 26px; font-weight: bold;color: #F4F4F4 !important;}	                                           }                                                                   
 .nkName{font-family: 华文新魏; font-size: 17px; font-weight: bold;}                                              
 .current-mod {                                                      
 	width: auto;                                                      
@@ -25,7 +21,7 @@
 	border: 1px solid #e6e6e6;                                        
 	margin-bottom: 4px;                                               
 }                                                                   
-                                                                    
+ /*当前页面位置导航*/                                                   
 .current-mod ul li {                                                
 	display: block;                                                   
 	float: left;                                                      
@@ -40,7 +36,7 @@
 /*搜索按钮*/                                          
 .searchBtn{float: right;vertical-align: middle;margin-top: 6px;transition:height 2s;}    
 .searchBtn > button:hover{height: 2.4em;}
-/*顶部栏*/
+/*顶部导航栏栏*/
 .navbarBg{background-color: #0081c2; box-shadow: 1px 1px 9px 4px gray; border-color: transparent;}
 .navbar-default .navbar-nav > li > a {color: #F7F7F7; background-color: #0081c2;}
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{color: #F7F7F7; background-color: #0081c2;}
@@ -56,6 +52,7 @@
       color: #555;
     background-color: #fff;
 }
+/*导航栏下拉菜单样式重写*/
 .submenu > li > a{background-color: #F7f7f7 !important;color: #222222 !important;}
 .glyphicon {margin-right: 2px;}
 .projectName >img{display: inline-block;width: 30px;transition: transform 1s;}
@@ -90,3 +87,6 @@
 .dock-container { position: relative; top: -8px; height: 50px; padding-left: 20px; }
 a.dock-item { display: block; width: 50px; position: absolute; bottom: 0; text-align: center; text-decoration: none; color: #333; }
 .dock-item img { border: 0; margin: 5px 10px 0px; width: 100%; }
+
+/*时间输入框宽度调整*/
+.form_datetime_start,.form_datetime_end{width: 218px; display: inline-block;}
