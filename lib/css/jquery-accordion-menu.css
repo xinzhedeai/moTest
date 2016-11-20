@@ -266,7 +266,8 @@
 }
 
 .white.jquery-accordion-menu ul ul.submenu li:hover>a {
-	border-left-color: #f0f0f0
+	/*border-left-color: #f0f0f0*/
+	border-left-color: #6399ec;
 }
 
 .white.jquery-accordion-menu ul ul.submenu li a {
