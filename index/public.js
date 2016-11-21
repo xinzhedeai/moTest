@@ -43,6 +43,22 @@ $(function(){
 			"title": "商品信息管理",
 			"link": "/commodity/productInfo.html"
 		}]
+	}, {
+		"title": "商品管理",
+		"link": "/commodity",
+		"subMenu": [{
+			"menu_id": "1c2b5r77-7254-11e5-b1ca-00163e000884",
+			"title": "商品信息管理",
+			"link": "/commodity/productInfo.html"
+		}]
+	}, {
+		"title": "商品管理",
+		"link": "/commodity",
+		"subMenu": [{
+			"menu_id": "1c2b5r77-7254-11e5-b1ca-00163e000884",
+			"title": "商品信息管理",
+			"link": "/commodity/productInfo.html"
+		}]
 	}];
 	
 	localStorage.menu = JSON.stringify(a);
