@@ -80,45 +80,62 @@ $(function(){
 	
 	$('#demo-list').html(navMenuStr);
 	
+	//jqueryui时间插件初始化
+	$('.startDate, .endDate').datepickerJQueryUI();
 	
-	//左部导航切换
-	$("#demo-list li").click(function(){
-		$("#demo-list li.active").removeClass("active")
-		$(this).addClass("active");
-	})	
-	//功能按钮初始化
-	$('#dock').Fisheye(
-		{
-			maxWidth: 10,
-			items: 'a',
-//			itemsText: 'span',
-			container: '.dock-container',
-			itemWidth: 60,
-			proximity: 40,
-			alignment : 'left',
-			valign: 'bottom',
-			halign : 'center'
+	/*左侧导航栏显示隐藏功能*/
+	$(".subNav").click(function(){				
+		/*显示*/
+		if($(this).find("span:first-child").attr('class') == "title-icon glyphicon glyphicon-chevron-down") {
+			$(this).find("span:first-child").removeClass("glyphicon-chevron-down");
+			$(this).find("span:first-child").addClass("glyphicon-chevron-up");
+			$(this).removeClass("sublist-down");
+			$(this).addClass("sublist-up");
 		}
-	);
-	$('#dock img').hover(function(){
-		console.log('haliluya');
-		$(this).tooltip({
-			position : 'top',
-			content: function(){
-				console.info('yimaneili');
-				var cc = $(this).attr('alt');
-				return cc;
-			},
-			onShow: function(){
-				$(this).tooltip('tip').css({
-					backgroundColor: '#428bca',
-					color: '#f7f7f7'
-				});
-    		}
-			
-		})
-	 })		
-	//page footer
+		/*隐藏*/
+		else {
+			$(this).find("span:first-child").removeClass("glyphicon-chevron-up");
+			$(this).find("span:first-child").addClass("glyphicon-chevron-down");
+			$(this).removeClass("sublist-up");
+			$(this).addClass("sublist-down");
+		}
+		// 修改数字控制速度， slideUp(500)控制卷起速度
+		$(this).next(".navContent").slideToggle(300).siblings(".navContent").slideUp(300);
+	});
+/*左侧导航栏缩进功能*/
+	$(".left-main .sidebar-fold").click(function(){
+		if($(this).parent().attr('class') == "left-main left-full") {
+			$(this).parent().removeClass("left-full");
+			$(this).parent().addClass("left-off");
+	
+			$(this).parent().parent().find(".right-product").removeClass("right-full");
+			$(this).parent().parent().find(".right-product").addClass("right-off");
+	
+		} else {
+			$(this).parent().removeClass("left-off");
+			$(this).parent().addClass("left-full");
+	
+			$(this).parent().parent().find(".right-product").removeClass("right-off");
+			$(this).parent().parent().find(".right-product").addClass("right-full");
+	
+		}
+	});
+ 
+  /*左侧鼠标移入提示功能*/
+	$(".sBox ul li").mouseenter(function(){
+		if($(this).find("span:last-child").css("display") == "none") {
+			$(this).find("div").show();
+		}
+	}).mouseleave(function() {
+		$(this).find("div").hide();
+	})
+	
+		//这个是改变窗口大小时，重新自适应的方法
+	$(window).resize(function() {
+		console.info('哈利路亚');
+		setTimeout("resizeDatagrid();", 300);
+	});	
+	//添加底部栏
 	$('body').append('<div class="footerWrapper">' +
 		'<div class="footer">' +
 			'<p class="footerLogo">' +
@@ -130,25 +147,4 @@ $(function(){
 		'</div>' +
 	'</div>');
 	
-	//时间插件初始化
-	$('.form_datetime_start,.form_datetime_end').datetimepicker({
-        language:  'zh-CN',
-//	        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView : 2,
-		maxView : 2,
-		pickerPosition : 'bottom-right',
-		format: 'yyyy-mm-dd',
-//			forceParse: 0,
-//	        showMeridian: 1,
-    });
-
 })
-//初始化 左侧菜单栏
-jQuery(document).ready(function () {
-	jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
-	
-});
