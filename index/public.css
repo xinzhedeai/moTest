@@ -61,8 +61,8 @@ a.dock-item { display: block; width: 50px; position: absolute; bottom: 0; text-a
 
 
 /*底部栏样式*/
-.footerWrapper{width:100%;  height:69px; overflow:hidden; background: url(../image/bg_footer.png) repeat-x top center; background-color:#F4F4F4;}
-.footer{margin:0 auto; width: 525px; height: 50px; padding-top: 20px;}
+.footerWrapper{width:100%;  height:50px; overflow:hidden; background: url(../image/bg_footer.png) repeat-x top center; background-color:#F4F4F4;}
+.footer{margin:0 auto; width: 525px; height: 50px; padding-top: 2px;}
 .footerLogo, .footerFont{float:left;}
 .footerFont{margin-left:66px; line-height:1.5em; font-size:11px; color:#666; padding-top:5px;}
 .rightWrapper{min-height: 820px; /*min-width: 1200px;*/}

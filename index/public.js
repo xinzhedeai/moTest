@@ -10,6 +10,12 @@
 
 
 $(function(){
+	//自适应页面高度
+	
+	var height = $(window).height() - 170;
+	if (height >= 800) {
+		$('.container-fluid').css('min-height', height);
+	}
 	    //左侧栏动态写入
     var a = [{
 		"title": "系统配置",
@@ -136,7 +142,7 @@ $(function(){
 		setTimeout("resizeDatagrid();", 300);
 	});	
 	//添加底部栏
-	$('body').append('<div class="footerWrapper">' +
+	$('.footerDiv').append('<div class="footerWrapper">' +
 		'<div class="footer">' +
 			'<p class="footerLogo">' +
 				'<img src="../lib/image/pic_footer.png" alt="footer logo" />' +
@@ -146,5 +152,6 @@ $(function(){
 			'</p>' +
 		'</div>' +
 	'</div>');
+	
 	
 })
