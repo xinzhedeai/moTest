@@ -71,26 +71,36 @@ $(function(){
 	var menu = $.parseJSON(localStorage.menu);
 	var navMenuStr = '', subMenuStr = '';
 	for(var i=0,leni = menu.length; i<leni; i++){
-			navMenuStr += '<li class="firstLevel"><a href="#" class="oneLevelA">';
+		if(i == 0){
+			navMenuStr += '<div class="sBox"><div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">';
 			navMenuStr += menu[i].title;
-			navMenuStr += '</a>';
-			navMenuStr += '<ul class="submenu">';
-//			console.info(menu[i].length);
-			for(var j=0, lenj = menu[i].subMenu.length; j<lenj; j++){
-				console.info("haliluya");
-				navMenuStr += '<li><a href="'+ menu[i].subMenu[j].link +'" class="twoLevelA">' +menu[i].subMenu[j].title+ '</a></li>'
-			}
-			navMenuStr += '</ul>';//二级菜单结束
-			navMenuStr += '</li>';//一级菜单结束
-	}
+			navMenuStr += '</span></div>';
+			navMenuStr += '<ul class="navContent" style="display:block">';
+		}else{
+			navMenuStr += '<div class="sBox"><div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">';
+			navMenuStr += menu[i].title;
+			navMenuStr += '</span></div>';
+			navMenuStr += '<ul class="navContent" style="display:none">';
+		}
 	
-	$('#demo-list').html(navMenuStr);
+		for(var j=0, lenj = menu[i].subMenu.length; j<lenj; j++){
+			if(i == 0 && j == 0){
+				navMenuStr += '	<li class="active"><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+			}else{
+				navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+			}
+			navMenuStr += '<a href="smsInfo.html"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">' + menu[i].subMenu[j].title + '</span></a></li>';
+		}
+		navMenuStr += '</ul>';//二级菜单结束
+		navMenuStr += '</div>';//一级菜单结束
+	}
+	$('.subNavBox').html(navMenuStr);
 	
 	//jqueryui时间插件初始化
 	$('.startDate, .endDate').datepickerJQueryUI();
 	
 	/*左侧导航栏显示隐藏功能*/
-	$(".subNav").click(function(){				
+	$("body").on('click','.subNav',function(){			
 		/*显示*/
 		if($(this).find("span:first-child").attr('class') == "title-icon glyphicon glyphicon-chevron-down") {
 			$(this).find("span:first-child").removeClass("glyphicon-chevron-down");
@@ -103,10 +113,11 @@ $(function(){
 			$(this).find("span:first-child").removeClass("glyphicon-chevron-up");
 			$(this).find("span:first-child").addClass("glyphicon-chevron-down");
 			$(this).removeClass("sublist-up");
-			$(this).addClass("sublist-down");
+			$(this).addClass("sublist-down"); 
+
 		}
 		// 修改数字控制速度， slideUp(500)控制卷起速度
-		$(this).next(".navContent").slideToggle(300).siblings(".navContent").slideUp(300);
+		$(this).next(".navContent").slideToggle(300).end().parent().siblings().find(".navContent").slideUp(300);
 	});
 /*左侧导航栏缩进功能*/
 	$(".left-main .sidebar-fold").click(function(){
@@ -141,17 +152,53 @@ $(function(){
 		console.info('哈利路亚');
 		setTimeout("resizeDatagrid();", 300);
 	});	
+	
+	
 	//添加底部栏
 	$('.footerDiv').append('<div class="footerWrapper">' +
 		'<div class="footer">' +
-			'<p class="footerLogo">' +
-				'<img src="../lib/image/pic_footer.png" alt="footer logo" />' +
-			'</p>' +
 			'<p class="footerFont">' +
-				'威海睿博软件有限公司 TEL:0631-5970779 &nbsp;FAX:0631-5970778<br />Copyright NS Soft Co.,Ltd. &nbsp;All rights reserved. &nbsp;Since 2013' +
+				'<a href="#" id="TelInfo" style="margin-right:50px;font-family:\'黑体\';">MO連絡先</a>'+
+					'Copyright © 2015  <span style="margin-right:50px;font-family:\'黑体\';">WEIHAI NS SOFT CO., LTD.</span>' +
 			'</p>' +
 		'</div>' +
 	'</div>');
 	
 	
+//<div style="background-color:#ffffff;color:#666666;height:43px;text-align:right;font-size:13px;font-family:'Times New Roman';">
+//<br>
+//<a href="javascript:showTel()" id="TelInfo" style="margin-right:50px;font-family:'黑体';">MO連絡先</a>
+//Copyright © 2015  <span style="margin-right:50px;font-family:'黑体';">WEIHAI NS SOFT CO., LTD.</span>
+//</div>
+//<div id="MoTel" class="" title="お問い合わせ" style="width:600px;height:200px; display:none">
+//<div style="text-align: center; margin: 20px;">
+//<table width="100%" border="1" cellspacing="0" cellpadding="0">
+//	<tr>
+//		<td rowspan="4">日本</td>
+//		<td>曹香玉</td>
+//		<td>81-476-49-7727</td>
+//	</tr>
+//	<tr>
+//		<td>宇崎贵之</td>
+//		<td>81-476-39-6194</td>
+//	</tr>
+//	<tr>
+//		<td>石井敏雄</td>
+//		<td>86-90-6486-7211</td>
+//	</tr>
+//	<tr>
+//		<td>山本长武</td>
+//		<td>86-90-6486-7214</td>
+//	</tr>
+//</table>
+//</div>
+//</div>
 })
+function showTel(){
+		$("#MoTel").css("display","block");
+		$('#MoTel').window({
+		    width:600,
+		    height:200,
+		    modal:true
+		});
+	}
