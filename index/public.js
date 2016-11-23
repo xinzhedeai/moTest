@@ -8,34 +8,51 @@
  * 
  */
 
-
 $(function(){
-	//自适应页面高度
+//	var pageN = window.location.pathname, flag=0;
+//	pageN = getPageN(pageN) ;
+//	console.info(pageN);
+//	console.info(getCookie('pageFlag'));
+	console.info(decodeURIComponent(getParameter('pageModule')));
 	
-	var height = $(window).height() - 170;
-	if (height >= 800) {
-		$('.container-fluid').css('min-height', height);
-	}
-	    //左侧栏动态写入
+	//jqueryui时间插件初始化
+	$('.startDate, .endDate').datepickerJQueryUI();
+	/*头部导航栏写入*/
+	$('.pagesHeader').html('<nav class="nav navbar-default navbar-mystyle navbar-fixed-top">'+
+								'<div class="navbar-header"></div>'+
+								'<div class="collapse navbar-collapse">'+
+									'<span style="font-size: 30px;margin-left: 7px;">MOAL SYSTEM</span>'+
+								    '<ul class="nav navbar-nav pull-right">'+
+								      	'<li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">605875855@qq.com<span class="caret"></span></a>'+
+									        '<ul class="dropdown-menu">'+
+									    		'<li><a href="login.html">个人主页</a></li>'+
+									    		'<li><a href="login.html">修改密码</a></li>'+
+									      		'<li><a href="login.html">退出</a></li>'+
+									        '</ul>'+
+								      	'</li>'+
+								    '</ul>'+
+						  		'</div>'+
+							'</nav>');
+	//左侧栏动态写入
     var a = [{
 		"title": "系统配置",
 		"link": "/sys-conf",
 		"subMenu": [{
 			"menu_id": "317208e8-7257-11e5-b1ca-00163e000884",
-			"title": "基本信息",
-			"link": "/sys-conf/basicinfo.html"
+			"title": "用户信息",
+			"link": "../sysConfig/userInfo.html"
 		}, {
 			"menu_id": "31720a9d-7257-11e5-b1ca-00163e000884",
 			"title": "日本邮编",
 			"link": "/sys-conf/jp-code.html"
 		}]
 	}, {
-		"title": "关联公司",
+		"title": "配送管理",
 		"link": "/company",
 		"subMenu": [{
 			"menu_id": "1c0a1e94-7254-11e5-b1ca-00163e000884",
-			"title": "代理公司",
-			"link": "/company/agency.html"
+			"title": "配送数据导入导出",
+			"link": "../delivery/impAndExp.html"
 		}, {
 			"menu_id": "1c0a1e93-7254-11e5-b1ca-00163e000884",
 			"title": "网购公司",
@@ -68,39 +85,69 @@ $(function(){
 	}];
 	
 	localStorage.menu = JSON.stringify(a);
-	var menu = $.parseJSON(localStorage.menu);
-	var navMenuStr = '', subMenuStr = '';
-	for(var i=0,leni = menu.length; i<leni; i++){
-		if(i == 0){
-			navMenuStr += '<div class="sBox"><div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">';
-			navMenuStr += menu[i].title;
-			navMenuStr += '</span></div>';
-			navMenuStr += '<ul class="navContent" style="display:block">';
-		}else{
-			navMenuStr += '<div class="sBox"><div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">';
-			navMenuStr += menu[i].title;
-			navMenuStr += '</span></div>';
-			navMenuStr += '<ul class="navContent" style="display:none">';
-		}
-	
-		for(var j=0, lenj = menu[i].subMenu.length; j<lenj; j++){
-			if(i == 0 && j == 0){
-				navMenuStr += '	<li class="active"><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
-			}else{
-				navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
-			}
-			navMenuStr += '<a href="smsInfo.html"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">' + menu[i].subMenu[j].title + '</span></a></li>';
-		}
-		navMenuStr += '</ul>';//二级菜单结束
-		navMenuStr += '</div>';//一级菜单结束
+	var menu = $.parseJSON(localStorage.menu), curPageMod = getPageModule(), flag = 0;
+	var navMenuStr = '<div class="left-main left-full"><div class="sidebar-fold"><span class="glyphicon glyphicon-th-list"></span></div><div class="subNavBox">', subMenuStr = '';
+	if(curPageMod && curPageMod != 'false'){
+		flag = 1;
 	}
-	$('.subNavBox').html(navMenuStr);
+	if(flag == 0){//根据标记，判断此前是否是第一次进入页面，是，则默认展开
+		for(var i=0,leni = menu.length; i<leni; i++){
+			if(i == 0){
+				navMenuStr += '<div class="sBox"><div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">';
+				navMenuStr += menu[i].title;
+				navMenuStr += '</span></div>';
+				navMenuStr += '<ul class="navContent" style="display:block">';
+			}else {
+				navMenuStr += '<div class="sBox"><div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">';
+				navMenuStr += menu[i].title;
+				navMenuStr += '</span></div>';
+				navMenuStr += '<ul class="navContent" style="display:none">';
+			}
+			for(var j=0, lenj = menu[i].subMenu.length; j<lenj; j++){
+				if(j == 0){
+					navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+				}else{
+					navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+				}
+				navMenuStr += '<a href="' +  menu[i].subMenu[j].link + '?pageModule=' + menu[i].title + '"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">' + menu[i].subMenu[j].title + '</span></a></li>';
+			}
+			navMenuStr += '</ul>';//二级菜单结束
+			navMenuStr += '</div>';//一级菜单结束
+		}
+	}else{
+		for(var i=0,leni = menu.length; i<leni; i++){
+			if(curPageMod == menu[i].title){
+				navMenuStr += '<div class="sBox"><div class="subNav sublist-up"><span class="title-icon glyphicon glyphicon-chevron-up"></span><span class="sublist-title">';
+				navMenuStr += menu[i].title;
+				navMenuStr += '</span></div>';
+				navMenuStr += '<ul class="navContent" style="display:block">';
+			}else {
+				navMenuStr += '<div class="sBox"><div class="subNav sublist-down"><span class="title-icon glyphicon glyphicon-chevron-down"></span><span class="sublist-title">';
+				navMenuStr += menu[i].title;
+				navMenuStr += '</span></div>';
+				navMenuStr += '<ul class="navContent" style="display:none">';
+			}
+			for(var j=0, lenj = menu[i].subMenu.length; j<lenj; j++){
+				if(j == 0){
+					navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+				}else{
+					navMenuStr += '	<li class=""><div class="showtitle" style="width:100px;"><img src="../lib/img/images/leftimg.png" />' + menu[i].subMenu[j].title + '</div>';
+				}
+				navMenuStr += '<a href="' +  menu[i].subMenu[j].link + '?pageModule=' + menu[i].title + '"><span class="sublist-icon glyphicon glyphicon-bullhorn"></span><span class="sub-title">' + menu[i].subMenu[j].title + '</span></a></li>';
+			}
+			navMenuStr += '</ul>';//二级菜单结束
+			navMenuStr += '</div>';//一级菜单结束
+		}
+	}
 	
-	//jqueryui时间插件初始化
-	$('.startDate, .endDate').datepickerJQueryUI();
+	navMenuStr += '</div></div>';//subBox
+	$('.leftMenu').html(navMenuStr);
 	
 	/*左侧导航栏显示隐藏功能*/
-	$("body").on('click','.subNav',function(){			
+	$("body").on('click','.subNav',function(){	
+		var a = $(this).find('.sublist-title').text();
+		console.info(a);
+		setCookie('pageFlag', a);
 		/*显示*/
 		if($(this).find("span:first-child").attr('class') == "title-icon glyphicon glyphicon-chevron-down") {
 			$(this).find("span:first-child").removeClass("glyphicon-chevron-down");
@@ -118,6 +165,9 @@ $(function(){
 		}
 		// 修改数字控制速度， slideUp(500)控制卷起速度
 		$(this).next(".navContent").slideToggle(300).end().parent().siblings().find(".navContent").slideUp(300);
+		$(this).parent().siblings().find(".title-icon").removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+		$(this).parent().siblings().find('.subNav ').removeClass('sublist-up').addClass('sublist-down');
+		
 	});
 /*左侧导航栏缩进功能*/
 	$(".left-main .sidebar-fold").click(function(){
@@ -147,7 +197,7 @@ $(function(){
 		$(this).find("div").hide();
 	})
 	
-		//这个是改变窗口大小时，重新自适应的方法
+	//这个是改变窗口大小时，重新自适应的方法
 	$(window).resize(function() {
 		console.info('哈利路亚');
 		setTimeout("resizeDatagrid();", 300);
@@ -163,42 +213,7 @@ $(function(){
 			'</p>' +
 		'</div>' +
 	'</div>');
-	
-	
-//<div style="background-color:#ffffff;color:#666666;height:43px;text-align:right;font-size:13px;font-family:'Times New Roman';">
-//<br>
-//<a href="javascript:showTel()" id="TelInfo" style="margin-right:50px;font-family:'黑体';">MO連絡先</a>
-//Copyright © 2015  <span style="margin-right:50px;font-family:'黑体';">WEIHAI NS SOFT CO., LTD.</span>
-//</div>
-//<div id="MoTel" class="" title="お問い合わせ" style="width:600px;height:200px; display:none">
-//<div style="text-align: center; margin: 20px;">
-//<table width="100%" border="1" cellspacing="0" cellpadding="0">
-//	<tr>
-//		<td rowspan="4">日本</td>
-//		<td>曹香玉</td>
-//		<td>81-476-49-7727</td>
-//	</tr>
-//	<tr>
-//		<td>宇崎贵之</td>
-//		<td>81-476-39-6194</td>
-//	</tr>
-//	<tr>
-//		<td>石井敏雄</td>
-//		<td>86-90-6486-7211</td>
-//	</tr>
-//	<tr>
-//		<td>山本长武</td>
-//		<td>86-90-6486-7214</td>
-//	</tr>
-//</table>
-//</div>
-//</div>
 })
-function showTel(){
-		$("#MoTel").css("display","block");
-		$('#MoTel').window({
-		    width:600,
-		    height:200,
-		    modal:true
-		});
-	}
+function getPageModule(){
+	return decodeURIComponent(getParameter('pageModule'));
+}

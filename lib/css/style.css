@@ -13,7 +13,7 @@ body{font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragin
 .left-main{ bottom: 0px; top:50px; z-index:100; position:fixed; background-color:#293038;}
 .sBox ul li{ list-style-type:none; position:relative;}
 
-.sBox ul{ padding:0px; position: relative; margin:0px;}
+.sBox ul{ padding:0px; position: relative; margin:0px;background-color: #9B9797;}
 .sBox ul li a{display: block;width: 100%;height: 40px;line-height: 40px;overflow: hidden; text-decoration:none; color:#FFF;}
 .sBox .sublist-icon{ width:48px; text-align:center;}
 .subNavBox .subNav{ height:40px; line-height:40px; color: #fff;}
@@ -21,9 +21,9 @@ body{font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragin
 .sBox .sublist-down{ background-color:#22282e;}
 .sBox .sublist-up{ background-color:#37424f;}
 .sBox .sublist-up ul{ display:none;}
-.sBox .sublist-title{ cursor:pointer; font-size: 12px;}
+.sBox .sublist-title{ cursor:pointer; font-size: 14px;}
 .sBox .subNav:hover,.sBox ul li:hover{ background-color:#42515f;}
-.sBox span{ line-height:36px;}
+.sBox span{ line-height:36px;font-size: 12px;}
 .sBox ul li .showtitle{ text-align:center; line-height:40px; position:absolute; z-index:100; background-color:#545f71; left:55px; padding:0px 10px 0px 10px; color:#FFF; min-width:100px; display:none;}
 .sBox ul li .showtitle img {position: absolute;left: -6px; top: 14px;}
 .left-off .sBox ul li .sub-title{ display:none;}

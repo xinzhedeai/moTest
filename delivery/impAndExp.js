@@ -1,25 +1,24 @@
-	//这个是自适应函数
-function resizeDatagrid() {	
-	var $center = $("#panel datagrid");
-	var cWidth = $center.width();
-	$("#impAndExpDatagrid").datagrid('resize', {
-		width: cWidth,
-	});
-}
+/**
+ * @file 配送数据导入导出
+ * @author haliluya
+ * @date: 2016-11-23 09:52:04
+ * @version: V1.0
+ */
+
+'use strict';
+
 $(function(){
 	$('#waybillUpload').click(function(){
 		$('#myModalUpload').modal();
 		$('.uploadModal').fileUpload();
 	})
 	$('#delWaybill').click(function(){
-//		var txt = '确定要删除所选择的运单吗？？';
-//		window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
 		var txt=  "确定删除？";
 			var option = {
 					title: "系统信息",
 					btn: parseInt("0011",2),
 					onOk: function(){
-						$collection.deleteCollectNode(nodeId);
+						//TODO 
 					},
 				onCancel: function(){
 					
@@ -99,4 +98,13 @@ var $impAndExp = {
 	pageNumber : 1,
 	order : 'desc',
 	sort : 'listprice'
+}
+
+//这个是自适应函数
+function resizeDatagrid() {	
+	var $center = $("#panel datagrid");
+	var cWidth = $center.width();
+	$("#impAndExpDatagrid").datagrid('resize', {
+		width: cWidth,
+	});
 }
