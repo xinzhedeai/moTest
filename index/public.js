@@ -86,7 +86,7 @@ $(function(){
 	
 	localStorage.menu = JSON.stringify(a);
 	var menu = $.parseJSON(localStorage.menu), curPageMod = getPageModule(), flag = 0;
-	var navMenuStr = '<div class="left-main left-full"><div class="sidebar-fold"><span class="glyphicon glyphicon-th-list"></span></div><div class="subNavBox">', subMenuStr = '';
+	var navMenuStr = '', subMenuStr = '';
 	if(curPageMod && curPageMod != 'false'){
 		flag = 1;
 	}
@@ -140,8 +140,8 @@ $(function(){
 		}
 	}
 	
-	navMenuStr += '</div></div>';//subBox
-	$('.leftMenu').html(navMenuStr);
+//	navMenuStr += '</div></div>';//subBox
+	$('.subNavBox').html(navMenuStr);
 	
 	/*左侧导航栏显示隐藏功能*/
 	$("body").on('click','.subNav',function(){	
